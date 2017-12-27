@@ -14,3 +14,5 @@ git config --global credential.helper store
 ## Not commit after change file access.
 git config core.fileMode false
 
+echo "Successfully install and config git."
+
