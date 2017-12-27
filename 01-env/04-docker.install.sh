@@ -2,7 +2,9 @@
 
 #!/bin/sh
 # install docker
-export _CSAST=ansible -i ./ansible-hosts
+
+export _CSAST='ansible -i ./ansible-hosts'
+
 $_CSAST all -m command -a 'yum install -y docker'
 
 ## set docker registry
