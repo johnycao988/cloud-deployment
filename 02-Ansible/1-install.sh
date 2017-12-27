@@ -1,4 +1,4 @@
-## Master server ,first need to run "chmod +x install.sh" in command line 
+## Master server ,first need to run "chmod +x 1-install.sh" in command line 
 
 #!/bin/sh
 
@@ -7,4 +7,4 @@ echo "Installing ansible..."
 yum install ansible
  
 echo "Successfully install ansible"
-
+ 
