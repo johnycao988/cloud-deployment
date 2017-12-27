@@ -11,3 +11,6 @@ git config --global user.email  "johnnycao@chinasystems.com"
 ## No password for git commit
 git config --global credential.helper store
 
+## Not commit after change file access.
+git config core.fileMode false
+
