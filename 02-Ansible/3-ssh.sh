@@ -1,4 +1,4 @@
-## Node server ,first need to run "chmod +x 2-install.sh" in command line 
+## Node server ,first need to run "chmod +x 3-ssh.sh" in command line 
 
 #!/bin/sh
 ## genereate key on master server, login with user: ansible

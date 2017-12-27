@@ -1,4 +1,4 @@
-## Master and Node servers ,first need to run "chmod +x 2-install.sh" in command line 
+## Master and Node servers ,first need to run "chmod +x 2-createuser.sh" in command line 
 
 #!/bin/sh
 
