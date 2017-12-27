@@ -14,7 +14,9 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 
 setenforce 0
+
 yum install -y kubelet kubeadm kubectl
+
 systemctl enable kubelet && systemctl start kubelet
 
  
