@@ -1,4 +1,4 @@
-## Master server ,first need to run "chmod +x install.sh" in command line 
+## Master server ,first need to run "chmod +x *.sh" in command line 
 
 #!/bin/sh
 
