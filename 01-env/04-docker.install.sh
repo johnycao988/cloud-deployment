@@ -11,6 +11,7 @@ $_CSAST command -a 'yum install -y docker'
 $_CSAST copy -a 'src=./docker-daemon.json dest=/etc/docker/daemon.json'
  
 ## enable and start docker service
-$_CSAST command -a 'systemctl enable docker && systemctl start docker'
+$_CSAST command -a 'systemctl enable docker' 
+$_CSAST command -a 'systemctl start docker'
 
 
