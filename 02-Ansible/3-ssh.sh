@@ -2,8 +2,6 @@
 
 #!/bin/sh
 ## genereate key on master server, login with user: ansible
-ssh-keygen 
-ssh-agent bash 
-ssh-add ~/.ssh/id_rsa 
+ssh-keygen || ssh-agent bash || ssh-add ~/.ssh/id_rsa 
 
 echo "Successfully genereate ssh kesy for user: ansible" 
