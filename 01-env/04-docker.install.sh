@@ -3,14 +3,14 @@
 #!/bin/sh
 # install docker
 
-export _CSAST='ansible -i ./ansible-hosts'
+export _CSAST='ansible -i ./ansible-hosts all -m'
 
-$_CSAST all -m command -a 'yum install -y docker'
+$_CSAST command -a 'yum install -y docker'
 
 ## set docker registry
-$_CSAST -m copy -a 'src=./docker-daemon.json dest=/etc/docker/daemon.json'
+$_CSAST copy -a 'src=./docker-daemon.json dest=/etc/docker/daemon.json'
  
 ## enable and start docker service
-$_CSAST all -m command -a 'systemctl enable docker && systemctl start docker'
+$_CSAST command -a 'systemctl enable docker && systemctl start docker'
 
 
