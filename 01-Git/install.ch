@@ -8,5 +8,6 @@ yum install git
 ### step2: config
 git config --global user.name "Johnny Cao"
 git config --global user.email  "johnnycao@chinasystems.com"
+## No password for git commit
 git config --global credential.helper store
 
