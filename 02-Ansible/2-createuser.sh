@@ -1,11 +1,9 @@
-## Master server ,first need to run "chmod +x 2-install.sh" in command line 
+## Master and Node servers ,first need to run "chmod +x 2-install.sh" in command line 
 
 #!/bin/sh
 
-### step1: create user:ansible
-adduser ansible 
-useradd -G root ansible
-echo "Successfully create user: ansible"
+### step1: create user:ansible on master and all node servers
+adduser ansible || useradd -G root ansible  || su - ansible -c "mkdir -p ~/.ssh" ||echo "Successfully create user: ansible"
 
 
 
