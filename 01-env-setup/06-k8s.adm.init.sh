@@ -1,6 +1,9 @@
 ##k8s  Master server ,first need to run "chmod +x *.sh" in command line 
 
+
+
 #!/bin/sh
+### before run below cmd, need to set value of '--apiserver-advertise-address' and '--pod-network-cidr'
 
 kubeadm init --token-ttl=0  --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=XXX.xxx.xxx.xxx
 
