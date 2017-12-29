@@ -4,7 +4,7 @@
 ## genereate key on master server, login with user: root
 ssh-keygen 
 
-## copy public key to each
+## copy public key to each nodes
 ssh-copy-id root@ root@10.39.107.140 
 ssh-copy-id root@ root@10.39.107.124 
 ssh-copy-id root@ root@10.39.101.226 
