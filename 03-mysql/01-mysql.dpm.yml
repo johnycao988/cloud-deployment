@@ -1,0 +1,67 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: mysql
+  namespace: cicd
+  labels:
+    k8s-app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: mysql
+  template:
+    metadata:
+      labels:
+        k8s-app: mysql
+        name: mysql
+    spec:
+      hostNetwork: false
+      nodeSelector:
+        nodeName: hsbcjenkins
+      volumes:
+        - name: "mysql-data"
+          hostPath:
+            path: "/data/mysql-data"    
+      containers:
+        - image: mysql
+          name: mysql
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: "mysql-data"
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: mysql     
+
+#docker run --name some-mysql -v /my/own/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: cicd
+spec:
+  selector:
+    k8s-app: mysql
+  ports:
+  - port: 3306
+    targetPort: 3306
+    
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mysql
+  namespace: cicd
+spec:
+  rules:
+  - host: mysql.cs.cloud.com
+    http:
+      paths:
+        - path: 
+          backend:
+            serviceName: mysql
+            servicePort: 3306            
