@@ -17,6 +17,8 @@ spec:
         name: nexus
     spec:
       hostNetwork: false
+      nodeSelector:
+        nodeName: caocentos7
       volumes:
         - name: "nexus-data"
           hostPath:
