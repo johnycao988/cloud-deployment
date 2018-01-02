@@ -1,0 +1,61 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: nexus
+  namespace: cicd
+  labels:
+    k8s-app: nexus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: nexus
+  template:
+    metadata:
+      labels:
+        k8s-app: nexus
+        name: nexus
+    spec:
+      hostNetwork: false
+      volumes:
+        - name: "nexus-data"
+          hostPath:
+            path: "/data/nexus-data"    
+      containers:
+        - image: sonatype/nexus3
+          name: nexus
+          volumeMounts:
+            - mountPath: "/nexus-data"
+              name: "nexus-data"
+          ports:
+            - containerPort: 8081 
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nexus
+  namespace: cicd
+spec:
+  selector:
+    k8s-app: nexus
+  ports:
+  - port: 8081
+    targetPort: 8081
+    
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nexus
+  namespace: cicd
+spec:
+  rules:
+  - host: nexus.cs.cloud.com
+    http:
+      paths:
+        - path: 
+          backend:
+            serviceName: nexus
+            servicePort: 8081            
