@@ -46,22 +46,11 @@ metadata:
 spec:
   selector:
     k8s-app: mysql
+  type: NodePort  
   ports:
   - port: 3306
     targetPort: 3306
+    nodePort: 30306
+    protocol: TCP
     
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: mysql
-  namespace: cicd
-spec:
-  rules:
-  - host: mysql.cs.cloud.com
-    http:
-      paths:
-        - path: 
-          backend:
-            serviceName: mysql
-            servicePort: 3306            
+          
