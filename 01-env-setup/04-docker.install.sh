@@ -3,7 +3,7 @@
 #!/bin/sh
 # install docker
 
-export _CSAST='ansible -i ./ansible-hosts all -m'
+export _CSAST='ansible -i ./ansible-hosts k8s-nodes -m'
 
 $_CSAST command -a 'yum install -y docker'
 
