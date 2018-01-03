@@ -41,7 +41,8 @@ spec:
       serviceAccountName: ingress
       terminationGracePeriodSeconds: 60
       hostNetwork: true
-
+      nodeSelector:
+        nodeRole: mgr
       volumes:
         - name: config
           configMap:
