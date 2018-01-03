@@ -3,7 +3,7 @@
 #!/bin/sh
 ## genereate key on master server, login with user: root
 
-ssh-keygen 
+ssh-keygen  
 
 ## copy public key to each nodes
 ssh-copy-id root@192.168.3.101
