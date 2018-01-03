@@ -5,7 +5,7 @@
 export _CSAST='ansible -i ./ansible-hosts k8s-nodes -m'
 
 ### before run below cmd, need to set value of '--token' and --discovery-token-ca-cert-hash
-$_CSAST command -a 'kubeadm join --token d239e7.9b11c0ac56999c2c 10.39.101.226:6443 --discovery-token-ca-cert-hash sha256:4ef00683d596d022f449e6e10e9ba27557074c4cb3ab0bdf8eb92cd8b9cfbf30' 
+$_CSAST command -a 'kubeadm join --token bcbe86.9ebf7652ddb423be 192.168.3.101:6443 --discovery-token-ca-cert-hash sha256:e68fe19ecde8d9bc291fc0b8f919dc937768861f462a9b76087b3a601847738c' 
  
 ###  reset kubernetes
 # on master:
