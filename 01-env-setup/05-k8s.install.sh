@@ -3,7 +3,7 @@
 #!/bin/sh
 # config yum repo.
 
-export _CSAST='ansible -i ./ansible-hosts all -m'
+export _CSAST='ansible -i ./ansible-hosts k8s-nodes -m'
 
 ## set k8s yum repo.
 
