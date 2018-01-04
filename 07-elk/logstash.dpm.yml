@@ -39,7 +39,7 @@ spec:
           hostPath:
             path: /run/docker/libcontainerd/containerd/events.log            
       nodeSelector:
-        nodeName: data  
+        nodeRole: data  
 
 ---
 

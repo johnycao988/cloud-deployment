@@ -41,7 +41,7 @@ spec:
         ports:
         - containerPort: 5601            
       nodeSelector:
-        nodeName: data  
+        nodeRole: data  
 
 ---
 # Ingress 文件如下
