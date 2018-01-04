@@ -34,7 +34,7 @@ spec:
     spec:
       hostNetwork: false
       containers:
-      - image: "10.39.101.226:5000/jboss/keycloak"
+      - image: "jboss/keycloak"
         name: keycloak
         ports:
         - containerPort: 8080
