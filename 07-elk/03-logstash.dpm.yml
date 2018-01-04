@@ -28,16 +28,16 @@ spec:
           - "/config-dir"             
         volumeMounts:
           - mountPath: "/config-dir"
-            name: "logstash-confs"            
-          - mountPath: "/logstash-logs/events.log"
+            name: "config-dir"            
+          - mountPath: "/logstash-logs"
             name: "logstash-logs"            
       volumes:
-        - name: "logstash-confs" 
-          hostPath:
-            path: "/K8s-Deployment/elk/logstash-confs"            
+        - name: "config-dir" 
+          configMap:
+            name: logstash-configmap
         - name: logstash-logs
           hostPath:
-            path: /run/docker/libcontainerd/containerd/events.log            
+            path: /logstash-logs            
       nodeSelector:
         nodeRole: data  
 
