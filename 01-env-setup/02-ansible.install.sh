@@ -7,4 +7,6 @@ echo "Installing ansible..."
 yum install ansible
  
 echo "Successfully install ansible"
+
+### ansible -i ./ansible-hosts k8s-nodes -m command -a 'systemctl daemon-reload && systemctl restart kubelet'
  
