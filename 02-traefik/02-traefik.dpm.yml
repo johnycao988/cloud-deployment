@@ -28,7 +28,7 @@ metadata:
   labels:
     k8s-app: traefik-ingress-lb
 spec:
-  replicas: 6
+  replicas: 3
   selector:
     matchLabels:
       k8s-app: traefik-ingress-lb
@@ -85,7 +85,7 @@ spec:
   tls:
   - secretName: traefik-tls-secret
   rules:
-  - host: traefik.ui.cs.cloud.com
+  - host: traefik.cscloud.com
     http:
       paths:
         - path: 
