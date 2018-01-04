@@ -44,7 +44,7 @@ spec:
           - name: KEYCLOAK_PASSWORD
             value: admin 
       nodeSelector:
-        nodeName: caocentos7  
+        nodeRole: mgr  
       
 ---
 # Ingress 文件如下
