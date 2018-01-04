@@ -55,7 +55,7 @@ metadata:
   namespace: sso
 spec:
   rules:
-  - host: "sso.cs.cloud.com"
+  - host: "sso.cscloud.com"
     http:
       paths:
         - backend:
