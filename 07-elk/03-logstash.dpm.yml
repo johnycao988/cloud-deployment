@@ -37,7 +37,7 @@ spec:
             name: logstash-configmap
         - name: logstash-logs
           hostPath:
-            path: /logstash-logs            
+            path: /elk/logstash-logs            
       nodeSelector:
         nodeRole: data  
 

@@ -46,7 +46,7 @@ spec:
       volumes:
         - name: els-data
           hostPath:
-            path: /K8s-Deployment/elk/els-data
+            path: /elk/els-data
 
       nodeSelector:
         nodeRole: data  
