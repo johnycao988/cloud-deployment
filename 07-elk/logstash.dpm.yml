@@ -58,19 +58,19 @@ spec:
     
 ---
  
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: logstash
-  namespace: elk
-spec:
-  rules:
-  - host: logstash.cs.cloud.com
-    http:
-      paths:
-        - backend:
-            serviceName: "logstash"
-            servicePort: 9600        
+#apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  name: logstash
+#  namespace: elk
+#spec:
+#  rules:
+#  - host: logstash.cscloud.com
+#    http:
+#      paths:
+#        - backend:
+#            serviceName: "logstash"
+#            servicePort: 9600        
         
 
      
