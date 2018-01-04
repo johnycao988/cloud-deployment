@@ -1,0 +1,76 @@
+---
+apiVersion: apps/v1beta2 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: logstash
+  namespace: elk 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logstash
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: logstash
+      labels:
+        app: logstash
+    spec:
+      hostNetwork: false
+      containers:
+      - image: logstash 
+        name: logstash
+        ports:
+        - containerPort: 9600
+        args:
+          - "-f"
+          - "/config-dir"             
+        volumeMounts:
+          - mountPath: "/config-dir"
+            name: "logstash-confs"            
+          - mountPath: "/logstash-logs/events.log"
+            name: "logstash-logs"            
+      volumes:
+        - name: "logstash-confs" 
+          hostPath:
+            path: "/K8s-Deployment/elk/logstash-confs"            
+        - name: logstash-logs
+          hostPath:
+            path: /run/docker/libcontainerd/containerd/events.log            
+      nodeSelector:
+        nodeName: data  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: logstash
+  namespace: elk
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 9600
+    targetPort: 9600 
+  selector:
+    app: logstash
+    
+---
+ 
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: logstash
+  namespace: elk
+spec:
+  rules:
+  - host: logstash.cs.cloud.com
+    http:
+      paths:
+        - backend:
+            serviceName: "logstash"
+            servicePort: 9600        
+        
+
+     

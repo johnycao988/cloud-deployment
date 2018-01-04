@@ -1,0 +1,4 @@
+curl -XPUT http://localhost:8008/els9200/test/type1/1 -d '{
+    "counter" : 1,
+    "tags" : ["red"]
+}'

@@ -1,0 +1,23 @@
+filebeat:
+  prospectors:
+    - paths:
+        - "/logs/events.log"
+      input_type: log
+      document_type: tomcat-log
+      fields:
+        _type: test
+        _index: filebeat
+ 
+  registry_file: /etc/registry/mark
+      
+#-------------------------- Elasticsearch output ------------------------------
+output:
+  elasticsearch:
+    hosts: ["http://elasticsearch:9200"]
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
+
+#  console:
+ #   pretty: true
