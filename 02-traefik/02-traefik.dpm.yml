@@ -28,7 +28,7 @@ metadata:
   labels:
     k8s-app: traefik-ingress-lb
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       k8s-app: traefik-ingress-lb
@@ -42,7 +42,7 @@ spec:
       terminationGracePeriodSeconds: 60
       hostNetwork: true
       nodeSelector:
-        nodeRole: ms
+        nodeRole: mgr
       volumes:
         - name: config
           configMap:
