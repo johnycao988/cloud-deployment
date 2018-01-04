@@ -33,9 +33,17 @@ spec:
         app: keycloak
     spec:
       hostNetwork: false
+      volumes:
+        - name: config
+          configMap:
+            name: keycloak-configmap      
       containers:
       - image: "jboss/keycloak"
         name: keycloak
+        volumeMounts:
+          - mountPath: "/opt/jboss/keycloak/standalone/configuration/standalone.xml"
+            name: "config"
+            subPath: standalone.xml
         ports:
         - containerPort: 8080
         env:
