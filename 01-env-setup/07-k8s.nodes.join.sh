@@ -28,3 +28,4 @@ $_CSAST copy -a 'src=/etc/cni/net.d/10-flannel.conf dest=/etc/cni/net.d/10-flann
 
 ##  $_CSAST command -a 'kubeadm reset'
 ##  $_CSAST copy -a 'src=./resolv.conf.bak dest=/etc/resolv.conf'
+##  $_CSAST copy -a 'src=./resolv.conf dest=/etc/resolv.conf'
