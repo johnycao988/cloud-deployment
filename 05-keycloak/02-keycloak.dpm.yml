@@ -57,8 +57,7 @@ spec:
               value: keycloak      
             - name: MYSQL_ROOT_PASSWORD
               value: mysql
-          args:
-            - --name mysql    
+    
         - image: "jboss/keycloak"
           name: keycloak
 #        volumeMounts:
