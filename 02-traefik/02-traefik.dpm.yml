@@ -38,7 +38,7 @@ spec:
         k8s-app: traefik-ingress-lb
         name: traefik-ingress-lb
     spec:
-      serviceAccountName: ingress
+      serviceAccountName: traefik-ingress
       terminationGracePeriodSeconds: 60
       hostNetwork: true
 
