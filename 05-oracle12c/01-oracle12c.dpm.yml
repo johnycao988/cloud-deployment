@@ -52,7 +52,7 @@ spec:
     name: p1521
   - port: 8080
     targetPort: 8080
-    name: p1521
+    name: p8080
     
         
  # ------------ Ingress ----------------------
