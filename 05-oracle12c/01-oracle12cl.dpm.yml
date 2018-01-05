@@ -49,10 +49,6 @@ spec:
     targetPort: 1521
     nodePort: 31521
     protocol: TCP 
-  - port: 8080
-    targetPort: 8080
-    nodePort: 30080
-    protocol: TCP  
     
         
  # ------------ Ingress ----------------------
