@@ -1,3 +1,4 @@
+---
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
@@ -47,13 +48,16 @@ spec:
   ports:
   - port: 1521
     targetPort: 1521
-    nodePort: 31521
-    protocol: TCP 
+    nodePort: 31521 
+    name: p1521
+  - port: 8080
+    targetPort: 8080
+    name: p1521
     
         
  # ------------ Ingress ----------------------
  
- # Ingress 文件如下
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
