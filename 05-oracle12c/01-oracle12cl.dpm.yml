@@ -1,0 +1,71 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: oracle12c
+  namespace: db
+  labels:
+    k8s-app: oracle12c
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: oracle12c
+  template:
+    metadata:
+      labels:
+        k8s-app: oracle12c
+        name: oracle12c
+    spec:
+      hostNetwork: false
+      nodeSelector:
+        nodeRole: db
+      volumes:
+        - name: "oracle12c-data"
+          hostPath:
+            path: "/dbdata/oracle12c-data"    
+      containers:
+        - image: sath89/oracle-12c
+          name: oracle12c
+          volumeMounts:
+            - mountPath: "/u01/app/oracle"
+              name: "oracle12c-data"
+          ports:
+            - containerPort: 1521
+            - containerPort: 8080 
+ 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle12c
+  namespace: db
+spec:
+  selector:
+    k8s-app: oracle12c
+  type: NodePort  
+  ports:
+  - port: 1521
+    targetPort: 1521
+    nodePort: 31521
+    protocol: TCP
+  - port: 8080
+    targetPort: 8080
+    
+ # ------------ Ingress ----------------------
+ 
+ # Ingress 文件如下
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: oracle12c
+  namespace: db
+spec:
+  rules:
+  - host: oracle12c.cscloud.com
+    http:
+      paths:
+        - backend:
+            serviceName: oracle12c
+            servicePort: 8080    
+    
