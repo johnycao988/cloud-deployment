@@ -36,43 +36,21 @@ spec:
       volumes:
         - name: config
           configMap:
-            name: keycloak-configmap  
-        - name: "mysql-data"
-          hostPath:
-            path: "/cloud-data/keycloak-data"    
+            name: keycloak-configmap      
       containers:
-        - image: mysql
-          name: mysql
-          volumeMounts:
-            - mountPath: "/var/lib/mysql"
-              name: "mysql-data"
-          ports:
-            - containerPort: 3306
-          env:
-            - name: MYSQL_DATABASE
-              value: keycloak 
-            - name: MYSQL_USER
-              value: keycloak      
-            - name: MYSQL_PASSWORD
-              value: keycloak      
-            - name: MYSQL_ROOT_PASSWORD
-              value: mysql
-    
-        - image: "jboss/keycloak"
-          name: keycloak
-#        volumeMounts:
-#          - mountPath: "/opt/jboss/keycloak/standalone/configuration/standalone.xml"
-#            name: "config"
-#            subPath: standalone.xml
-          ports:
-            - containerPort: 8080
-          env:
+      - image: "jboss/keycloak"
+        name: keycloak
+        volumeMounts:
+          - mountPath: "/opt/jboss/keycloak/standalone/configuration/standalone.xml"
+            name: "config"
+            subPath: standalone.xml
+        ports:
+        - containerPort: 8080
+        env:
           - name: KEYCLOAK_USER
-            value: admin
+            value:  admin
           - name: KEYCLOAK_PASSWORD
             value: admin 
-          args:
-            - --link mysql:mysql  
       nodeSelector:
         nodeRole: mgr  
       
