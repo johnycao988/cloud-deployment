@@ -20,7 +20,7 @@ spec:
       nodeSelector:
         nodeRole: data
       containers:
-        - image: sonatype/sonarqube
+        - image: sonarqube
           name: sonarqube
           env:
             - name: SONARQUBE_JDBC_USERNAME
