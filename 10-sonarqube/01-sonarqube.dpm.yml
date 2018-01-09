@@ -1,0 +1,71 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: sonarqube
+  namespace: cicd
+  labels:
+    k8s-app: sonarqube
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: sonarqube
+  template:
+    metadata:
+      labels:
+        k8s-app: sonarqube
+        name: sonarqube
+    spec:
+      hostNetwork: false
+      nodeSelector:
+        nodeRole: data
+      containers:
+        - image: sonatype/sonarqube
+          name: sonarqube
+          env:
+            - name: SONARQUBE_JDBC_USERNAME
+              value: sonar
+            - name: SONARQUBE_JDBC_PASSWORD
+              value: sonar
+            - name: SONARQUBE_JDBC_URL
+              value: jdbc:mysql:mysql.db:3306/sonar?useUnicode=true\&characterEncoding=utf8\&rewriteBatchedStatements=true\&useConfigs=maxPerformance\&rewriteBatchedStatements=true
+          ports:
+            - containerPort: 9000
+            - containerPort: 9092
+             
+            
+#docker run -d --restart=always --name=sonarqube.server -p 9000:9000 -p 9092:9092 sonarqube -Dsonar.jdbc.username=sonar -Dsonar.jdbc.password=sonar -Dsonar.jdbc.url=jdbc:mysql://10.39.101.226:3306/sonar?useUnicode=true\&characterEncoding=utf8\&rewriteBatchedStatements=true\&useConfigs=maxPerformance\&rewriteBatchedStatements=true
+      
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarqube
+  namespace: cicd
+spec:
+  selector:
+    k8s-app: sonarqube
+  ports:
+  - port: 9000
+    name: p9000
+    targetPort: 9000
+  - port: 9092
+    name: p9092
+    targetPort: 9092
+    
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sonarqube
+  namespace: cicd
+spec:
+  rules:
+  - host: sonarqube.cscloud.com
+    http:
+      paths:
+        - path: 
+          backend:
+            serviceName: sonarqube
+            servicePort: 9000            
