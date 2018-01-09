@@ -42,7 +42,7 @@ spec:
       terminationGracePeriodSeconds: 60
       hostNetwork: true
       nodeSelector:
-        hasTraefikRole: true
+        hasTraefikRole: has
       volumes:
         - name: config
           configMap:
