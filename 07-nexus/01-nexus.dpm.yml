@@ -54,7 +54,7 @@ metadata:
   namespace: cicd
 spec:
   rules:
-  - host: nexus.cs.cloud.com
+  - host: nexus.cscloud.com
     http:
       paths:
         - path: 
