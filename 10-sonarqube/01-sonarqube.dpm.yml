@@ -28,7 +28,7 @@ spec:
             - name: SONARQUBE_JDBC_PASSWORD
               value: sonar
             - name: SONARQUBE_JDBC_URL
-              value: "jdbc:mysql:192.168.3.102:30306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&rewriteBatchedStatements=true"
+              value: "jdbc:mysql://mysql.db:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useConfigs=maxPerformance&rewriteBatchedStatements=true"
           ports:
             - containerPort: 9000
             - containerPort: 9092
