@@ -22,7 +22,7 @@ spec:
       volumes:
         - name: "nexus-data"
           hostPath:
-            path: "/data/nexus-data"    
+            path: "/clouddata/nexus-data"    
       containers:
         - image: sonatype/nexus3
           name: nexus
