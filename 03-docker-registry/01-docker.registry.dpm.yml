@@ -1,0 +1,63 @@
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: docker-registry
+  namespace: cicd
+  labels:
+    k8s-app: docker-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: docker-registry
+  template:
+    metadata:
+      labels:
+        k8s-app: docker-registry
+        name: docker-registry
+    spec:
+      hostNetwork: false
+      nodeSelector:
+        nodeRole: data
+      volumes:
+        - name: "docker-registry-data"
+          hostPath:
+            path: "/clouddata/docker-registry-data"    
+      containers:
+        - image: registry
+          name: docker-registry
+          volumeMounts:
+            - mountPath: "/var/lib/registry"
+              name: "docker-registry-data"
+          ports:
+            - containerPort: 5000 
+
+#docker run --restart=always --name docker.registry -d -p 5000:5000 -v {{REGISTRY_FOLDER}}:/var/lib/registry registry
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-registry
+  namespace: cicd
+spec:
+  selector:
+    k8s-app: docker-registry
+  ports:
+  - port: 5000
+    targetPort: 5000
+    
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: docker-registry
+  namespace: cicd
+spec:
+  rules:
+  - host: docker.registry.cscloud.com
+    http:
+      paths:
+        - path: 
+          backend:
+            serviceName: docker-registry
+            servicePort: 5000            
