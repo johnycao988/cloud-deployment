@@ -159,7 +159,7 @@
 			<repositories>
 				<repository>
 					<id>cs_public</id>
-					<url>http://nexus.cs.cloud.com/repository/maven-public/</url>
+					<url>http://nexus.cscloud.com/repository/maven-public/</url>
 					<releases>
 						<enabled>true</enabled>
 					</releases>
