@@ -99,7 +99,7 @@
 		<mirror>
 			<id>nexus</id>
 			<mirrorOf>*</mirrorOf>
-			<url>http://nexus.cs.cloud.com/repository/maven-public/</url>
+			<url>http://nexus.cscloud.com/repository/maven-public/</url>
 		</mirror>
 
 	</mirrors>
@@ -188,6 +188,7 @@
 			<jdk>1.7</jdk> </activation> <properties> <maven.compiler.source>1.7</maven.compiler.source> 
 			<maven.compiler.target>1.7</maven.compiler.target> <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion> 
 			</properties> </profile> -->
+	<!-- 
 		<profile>
 			<id>sonar</id>
 			<activation>
@@ -200,7 +201,7 @@
 				<sonar.password>johnny</sonar.password>
 			</properties>
 		</profile>
-
+ -->
 
 	</profiles>
 
